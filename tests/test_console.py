@@ -96,7 +96,9 @@ EOF  all  count  create  destroy  help  quit  show  update
         """Tests the help command."""
         with patch('sys.stdout', new=StringIO()) as f:
             HBNBCommand().onecmd("help all")
-        s = 'Prints all string representation of all instances.\n        \n'
+        s = '''Usage: all or all <class> or <class>.all()
+        Display string representations of all instances of a given class.
+        If no class is specified, displays all instantiated objects.\n'''
         self.assertEqual(s, f.getvalue())
 
     def test_help_count(self):
@@ -399,7 +401,7 @@ EOF  all  count  create  destroy  help  quit  show  update
         with patch('sys.stdout', new=StringIO()) as f:
             HBNBCommand().onecmd("garbage.count()")
         msg = f.getvalue()[:-1]
-        self.assertEqual(msg, "** class doesn't exist **")
+        self.assertEqual(msg, "0")
         with patch('sys.stdout', new=StringIO()) as f:
             HBNBCommand().onecmd(".count()")
         msg = f.getvalue()[:-1]
