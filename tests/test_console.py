@@ -53,7 +53,7 @@ class TestHBNBCommand(unittest.TestCase):
         s = """
 Documented commands (type help <topic>):
 ========================================
-EOF  all  count  create  destroy  help  quit  show  update
+EOF  all  count  create  destroy  help  quit  show  update\n
 """
         self.assertEqual(s, f.getvalue())
 
@@ -61,7 +61,7 @@ EOF  all  count  create  destroy  help  quit  show  update
         """Tests the help command."""
         with patch('sys.stdout', new=StringIO()) as f:
             HBNBCommand().onecmd("help EOF")
-        s = 'Handles End Of File character.\n        \n'
+        s = 'EOF signal to exit the program.\n'
         self.assertEqual(s, f.getvalue())
 
     def test_help_quit(self):
@@ -96,7 +96,7 @@ EOF  all  count  create  destroy  help  quit  show  update
         """Tests the help command."""
         with patch('sys.stdout', new=StringIO()) as f:
             HBNBCommand().onecmd("help all")
-        s = 'Prints all string representation of all instances.\n        \n'
+        s = 'Usage: all or all <class> or <class>.all()\nDisplay string representations of all instances of a given class.\nIf no class is specified, displays all instantiated objects.\n'
         self.assertEqual(s, f.getvalue())
 
     def test_help_count(self):
