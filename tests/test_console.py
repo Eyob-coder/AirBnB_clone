@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""Module for Test Command."""
+"""Module for TestHBNBCommand class."""
 
 from console import HBNBCommand
 from models.engine.file_storage import FileStorage
@@ -14,7 +14,7 @@ import os
 
 class TestHBNBCommand(unittest.TestCase):
 
-    """Tests ABNBCommand console."""
+    """Tests HBNBCommand console."""
 
     attribute_values = {
         str: "foobar108",
@@ -50,7 +50,11 @@ class TestHBNBCommand(unittest.TestCase):
         """Tests the help command."""
         with patch('sys.stdout', new=StringIO()) as f:
             HBNBCommand().onecmd("help")
-        s = """EOF  all  count  create  destroy  help  quit  show  update"""
+        s = """
+Documented commands (type help <topic>):
+========================================
+EOF  all  count  create  destroy  help  quit  show  update
+"""
         self.assertEqual(s, f.getvalue())
 
     def test_help_EOF(self):
@@ -542,7 +546,7 @@ class TestHBNBCommand(unittest.TestCase):
         self.assertIn(val, s)
 
     def test_update_everything(self):
-        """Tests update command with errthang."""
+        """Tests update command with errthang, like a baws."""
         for classname, cls in self.classes().items():
             uid = self.create_class(classname)
             for attr, value in self.test_random_attributes.items():
