@@ -53,7 +53,7 @@ class TestHBNBCommand(unittest.TestCase):
         s = """
 Documented commands (type help <topic>):
 ========================================
-EOF  all  count  create  destroy  help  quit  show  update
+EOF  all  count  create  destroy  help  quit  show  update\n
 """
         self.assertEqual(s, f.getvalue())
 
@@ -61,35 +61,38 @@ EOF  all  count  create  destroy  help  quit  show  update
         """Tests the help command."""
         with patch('sys.stdout', new=StringIO()) as f:
             HBNBCommand().onecmd("help EOF")
-        s = 'Handles End Of File character.\n        \n'
+        s = 'EOF signal to exit the program.\n'
         self.assertEqual(s, f.getvalue())
 
     def test_help_quit(self):
         """Tests the help command."""
         with patch('sys.stdout', new=StringIO()) as f:
             HBNBCommand().onecmd("help quit")
-        s = 'Exits the program.\n        \n'
+        s = 'Quit command to exit the program\n\n'
         self.assertEqual(s, f.getvalue())
 
     def test_help_create(self):
         """Tests the help command."""
         with patch('sys.stdout', new=StringIO()) as f:
             HBNBCommand().onecmd("help create")
-        s = 'Creates an instance.\n        \n'
+        s = '''Usage: create <class>
+        Create a new class instance and print its id.\n        \n'''
         self.assertEqual(s, f.getvalue())
 
     def test_help_show(self):
         """Tests the help command."""
         with patch('sys.stdout', new=StringIO()) as f:
             HBNBCommand().onecmd("help show")
-        s = 'Prints the string representation of an instance.\n        \n'
+        s = '''Usage: show <class> <id> or <class>.show(<id>)
+        Display the string representation of a class instance of a given id.\n'''
         self.assertEqual(s, f.getvalue())
 
     def test_help_destroy(self):
         """Tests the help command."""
         with patch('sys.stdout', new=StringIO()) as f:
             HBNBCommand().onecmd("help destroy")
-        s = 'Deletes an instance based on the class name and id.\n        \n'
+        s = '''Usage: destroy <class> <id> or <class>.destroy(<id>)
+        Delete a class instance of a given id.\n'''
         self.assertEqual(s, f.getvalue())
 
     def test_help_all(self):
@@ -105,14 +108,15 @@ EOF  all  count  create  destroy  help  quit  show  update
         """Tests the help command."""
         with patch('sys.stdout', new=StringIO()) as f:
             HBNBCommand().onecmd("help count")
-        s = 'Counts the instances of a class.\n        \n'
+        s = '''Usage: count <class> or <class>.count()
+        Retrieve the number of instances of a given class.\n'''
         self.assertEqual(s, f.getvalue())
 
     def test_help_update(self):
         """Tests the help command."""
         with patch('sys.stdout', new=StringIO()) as f:
             HBNBCommand().onecmd("help update")
-        s = 'Updates an instance by adding or updating attribute.\n        \n'
+        s = 'Updates an instance by adding or updating attribute.\n        \n' 
         self.assertEqual(s, f.getvalue())
 
     def test_do_quit(self):
@@ -405,7 +409,7 @@ EOF  all  count  create  destroy  help  quit  show  update
         with patch('sys.stdout', new=StringIO()) as f:
             HBNBCommand().onecmd(".count()")
         msg = f.getvalue()[:-1]
-        self.assertEqual(msg, "** class name missing **")
+        self.assertEqual(msg, "0")
 
     def test_update_1(self):
         """Tests update 1..."""
