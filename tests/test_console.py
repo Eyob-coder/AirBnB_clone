@@ -84,7 +84,8 @@ EOF  all  count  create  destroy  help  quit  show  update\n
         with patch('sys.stdout', new=StringIO()) as f:
             HBNBCommand().onecmd("help show")
         s = '''Usage: show <class> <id> or <class>.show(<id>)
-        Display the string representation of a class instance of a given id.\n        \n'''
+        Display the string representation of a class
+        instance of a given id.\n        \n'''
         self.assertEqual(s, f.getvalue())
 
     def test_help_destroy(self):
@@ -120,7 +121,7 @@ EOF  all  count  create  destroy  help  quit  show  update\n
        <class>.update(<id>, <attribute_name>, <attribute_value>) or
        <class>.update(<id>, <dictionary>)
         Update a class instance of a given id by adding or updating
-        a given attribute key/value pair or dictionary.\n''' 
+        a given attribute key/value pair or dictionary.\n'''
         self.assertEqual(s, f.getvalue())
 
     def test_do_quit(self):
