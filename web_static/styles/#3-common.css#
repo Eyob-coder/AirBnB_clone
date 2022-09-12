@@ -1,0 +1,4 @@
+body {
+    margin: none;
+    min-height: 100%;
+}
