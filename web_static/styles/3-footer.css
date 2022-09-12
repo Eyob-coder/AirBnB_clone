@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 footer div {
     background-color: #00FF00;
     height: 60px;
@@ -6,4 +7,23 @@ footer div {
     position: fixed;
     bottom: 0;
     line-height: 60px;
+=======
+footer {
+    display: flex;
+    border-top: 1px solid #CCCCCC;
+    height: 60px;
+    width: 100%;
+    background-color: white;
+    align-items: stretch;
+    flex-direction: row;
+    justify-content: center;
+    bottom: 0;
+    position: fixed;
+}
+
+.footText {
+    text-align: center;
+    display: flex;
+    align-items: center;
+>>>>>>> 6323c3652b840065aa74fcbae4113017db0cd4a0
 }
